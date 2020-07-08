@@ -1,21 +1,21 @@
 name: 'Publish Docker image'
 
 on:
-    push:
-        branches: ['master']
+  push:
+    branches: ['master']
 
 jobs:
-    publish:
-        runs-on: ubuntu-latest
+  publish:
+    runs-on: ubuntu-latest
     steps:
-        - uses: 'actions/checkout@v2'
-        - name: 'build malloc'
-          run: 'docker build . --build-arg CONFIGURATION malloc -t alombardo4/malloc-space'
-        - name: 'build aleclombardo'
-          run: 'docker build . --build-arg CONFIGURATION aleclombardo -t alombardo4/aleclombardo'
-        - name: 'docker login'
-          run: 'docker login --username ${{secrets.DOCKER_HUB_USERNAME}} --password ${{secrets.DOCKER_HUB_TOKEN}}'
-        - name: 'push malloc'
-          run: 'docker push alombardo4/malloc-space'
-        - name: 'push aleclombardo'
-          run: 'docker push alombardo4/aleclombardo'
+    - uses: 'actions/checkout@v2'
+    - name: 'build malloc'
+      run: 'docker build . --build-arg CONFIGURATION malloc -t alombardo4/malloc-space'
+    - name: 'build aleclombardo'
+      run: 'docker build . --build-arg CONFIGURATION aleclombardo -t alombardo4/aleclombardo'
+    - name: 'docker login'
+      run: 'docker login --username ${{secrets.DOCKER_HUB_USERNAME}} --password ${{secrets.DOCKER_HUB_TOKEN}}'
+    - name: 'push malloc'
+      run: 'docker push alombardo4/malloc-space'
+    - name: 'push aleclombardo'
+      run: 'docker push alombardo4/aleclombardo'
