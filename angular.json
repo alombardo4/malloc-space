@@ -7,12 +7,14 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "inlineTemplate": true,
+          "skipTests": true
         }
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "malloc",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -30,14 +32,19 @@
             "styles": [
               "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
-            "production": {
+            "aleclombardo": {
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "with": "src/environments/aleclombardo.ts"
                 }
               ],
               "optimization": true,
@@ -53,11 +60,29 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
-                },
+                }
+              ]
+            },
+            "malloc": {
+              "fileReplacements": [
                 {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/malloc.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
                 }
               ]
             }
@@ -78,23 +103,6 @@
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
             "browserTarget": "malloc-space:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
-            "scripts": []
           }
         },
         "lint": {
@@ -123,6 +131,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "malloc-space"
+    }
+  },
+  "defaultProject": "malloc-space",
+  "cli": {
+    "analytics": false
+  }
 }

@@ -1,0 +1,21 @@
+@import '~@angular/material/theming';
+@import 'styles';
+
+div.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    h1.site-title {
+        color: mat-color($malloc-space-primary);
+        size: 64px;
+    }
+
+    p.subtitle {
+        color: mat-color($malloc-space-primary);
+        size: 42px;
+    }
+}

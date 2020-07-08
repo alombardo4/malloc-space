@@ -1,0 +1,16 @@
+@import '~@angular/material/theming';
+@import 'styles';
+
+div.social {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 120px;
+
+    a {
+        i {
+            color: mat-color($malloc-space-accent);
+        }
+    }
+}
